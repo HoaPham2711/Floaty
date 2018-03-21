@@ -307,6 +307,10 @@ open class Floaty: UIView {
      */
     @objc open func open() {
         fabDelegate?.floatyWillOpen?(self)
+        
+        // Customized by Hoa Pham
+        circleLayer.backgroundColor = buttonColor.cgColor
+        
         let animationGroup = DispatchGroup()
         
         if(items.count > 0){
@@ -350,6 +354,9 @@ open class Floaty: UIView {
         
         animationGroup.notify(queue: .main) {
             self.fabDelegate?.floatyDidOpen?(self)
+            
+            // Customized by Hoa Pham
+            self.circleLayer.backgroundColor = self.buttonColor.cgColor
         }
         fabDelegate?.floatyOpened?(self)
         closed = false
@@ -360,6 +367,10 @@ open class Floaty: UIView {
      */
     @objc open func close() {
         fabDelegate?.floatyWillClose?(self)
+        
+        // Customized by Hoa Pham
+        self.circleLayer.backgroundColor = self.buttonColor.cgColor
+
         let animationGroup = DispatchGroup()
         
         if(items.count > 0){
@@ -399,6 +410,9 @@ open class Floaty: UIView {
         
         animationGroup.notify(queue: .main) {
             self.fabDelegate?.floatyDidClose?(self)
+            
+            // Customized by Hoa Pham
+            self.circleLayer.backgroundColor = self.buttonColor.cgColor
         }
         fabDelegate?.floatyClosed?(self)
         closed = true
